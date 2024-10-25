@@ -12,10 +12,10 @@ public class Board {
         initializeBoard();
         drawBoard();
         if (gameType == 1) {
-            System.out.println("GAME NORMAL +++++");
+            System.out.println("+++++ GAME NORMAL +++++");
             initGame();
         } else {
-            System.out.println("GAME INVERTED ------");
+            System.out.println("------ GAME INVERTED ------");
             initGame();
         }
     }
