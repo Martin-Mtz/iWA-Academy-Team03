@@ -28,7 +28,7 @@ public class TicTacToeNormal extends Game {
                 col = scanner.nextInt() - 1; // Change 0-index
                 validInput = true;
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter only numbers.");;
+                System.out.println("Invalid input. Please enter only numbers.");
                 scanner.nextLine(); // Clear input buffer
             }
         }
