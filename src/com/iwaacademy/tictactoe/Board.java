@@ -24,23 +24,22 @@ public class Board {
         System.out.println("====Starting the game===");
         TicTacToeNormal ticTacToeNormal = new TicTacToeNormal(size, gameType, board);
 
-        char currentPlayer = EnumPlayers.X.getValuePlayer();;
+        EnumPlayers currentPlayer = EnumPlayers.X;
 
         while (true) {
-            int[] move = ticTacToeNormal.getPlayerMove(currentPlayer); // Pasar el jugador actual
+            int[] move = ticTacToeNormal.getPlayerMove(currentPlayer.getValuePlayer()); // Pasar el jugador actual
             if (validateInput(move)) {
-                board[move[0]][move[1]] = currentPlayer;
+                board[move[0]][move[1]] = currentPlayer.getValuePlayer();
                 drawBoard();
 
                 if (ticTacToeNormal.isWinner(size) && gameType == 1) { // Pasar el tablero
                     System.out.println("¡Player " + currentPlayer + " wins!");
                     break;
                 }
-                if(ticTacToeNormal.isWinner(size) && gameType == 2) {
-                    if(currentPlayer == 'X'){
+                if (ticTacToeNormal.isWinner(size) && gameType == 2) {
+                    if (currentPlayer.getValuePlayer() == 'X') {
                         System.out.println("¡Player " + EnumPlayers.O.getValuePlayer() + " WIN!");
-                    }
-                    else{
+                    } else {
                         System.out.println("¡Player " + EnumPlayers.X.getValuePlayer() + " WIN!");
                     }
 
@@ -52,7 +51,7 @@ public class Board {
                     break;
                 }
 
-                currentPlayer = (currentPlayer == EnumPlayers.X.getValuePlayer()) ? EnumPlayers.O.getValuePlayer(): EnumPlayers.X.getValuePlayer(); // change player
+                currentPlayer = (currentPlayer == EnumPlayers.X) ? EnumPlayers.O : EnumPlayers.X; // change player
 
             } else {
                 System.out.println("Invalid movement. Try again..");
