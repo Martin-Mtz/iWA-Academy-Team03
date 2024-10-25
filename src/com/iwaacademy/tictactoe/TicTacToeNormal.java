@@ -1,5 +1,6 @@
 package com.iwaacademy.tictactoe;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TicTacToeNormal extends Game {
@@ -7,7 +8,7 @@ public class TicTacToeNormal extends Game {
     private int gameType;
     final char[][] board;
 
-    public TicTacToeNormal(int size, int gameType, char[][] board ) {
+    public TicTacToeNormal(int size, int gameType, char[][] board) {
         this.size = size;
         this.gameType = gameType;
         this.board = board; //Initialize the board
@@ -16,10 +17,21 @@ public class TicTacToeNormal extends Game {
     @Override
     public int[] getPlayerMove(char currentPlayer) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Player " + currentPlayer + ", enter your movement (row and column): ");
+        int col = -1;
+        int row = -1;
+        boolean validInput = false;
 
-        int row = scanner.nextInt() - 1; // Change 0-index
-        int col = scanner.nextInt() - 1; // Change 0-index
+        while (!validInput) {
+            try {
+                System.out.print("Player " + currentPlayer + ", enter your movement (row and column): ");
+                row = scanner.nextInt() - 1; // Change 0-index
+                col = scanner.nextInt() - 1; // Change 0-index
+                validInput = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter only numbers.");
+                scanner.nextLine(); // Clear input buffer
+            }
+        }
         return new int[]{row, col};
     }
 
