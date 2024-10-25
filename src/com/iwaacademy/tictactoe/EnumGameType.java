@@ -1,8 +1,8 @@
 package com.iwaacademy.tictactoe;
 
 public enum EnumGameType {
-    GAME01("Game Normal",1),
-    GAME02("Game Invertido",2);
+    GAME01("Normal Game ",1),
+    GAME02("Inverted Game ",2);
 
     private String descriptionGameType;
     private int valueGameType;
